@@ -1,0 +1,17 @@
+{
+  "register": [
+    {
+      "id": "a256",
+      "name": "vansh",
+      "email": "vanshdhameliya07@gmail.com",
+      "password": "1234"
+    },
+    {
+      "id": "9618",
+      "name": "ss",
+      "email": "ss@gmail.com",
+      "password": "000"
+    }
+  ],
+  "student": []
+}
