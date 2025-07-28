@@ -9,28 +9,25 @@ import { ToastContainer, toast } from 'react-toastify';
 const Login = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-
     const [forminput, setForminput] = useState({
         email: '',
         password: ''
     });
 
-    const changeInput = (event) => {
-        const { name, value } = event.target;
+    const changeInput = (e) => {
+        const { name, value } = e.target;
         setForminput({
             ...forminput,
             [name]: value
         });
     };
 
-    const handleSubmit = async (event) => {
-        event.preventDefault();
+    const handleSubmit = async (e) => {
+        e.preventDefault();
         const result = await dispatch(Login_user(forminput));
         if (result) {
             toast.success("Login successful!");
-            setTimeout(() => {
-                navigate("/dashboard");
-            }, 2000);
+            setTimeout(() => navigate("/dashboard"), 2000);
         } else {
             toast.error("Invalid email or password");
         }
@@ -39,44 +36,45 @@ const Login = () => {
     return (
         <>
             <Navbar />
-            <div style={styles.container}>
-                <div style={styles.card}>
-                    <h2 style={styles.heading}>Login</h2>
-                    <form onSubmit={handleSubmit} style={styles.form}>
-                        <div style={styles.formGroup}>
-                            <label style={styles.label}>Email</label>
+            <div className="container d-flex justify-content-center align-items-center" style={{ height: "100vh", backgroundColor: "#f8f9fa" }}>
+                <div className="card shadow-lg p-4" style={{ maxWidth: "400px", width: "100%", borderRadius: "15px" }}>
+                    <h3 className="text-center text-primary fw-bold mb-4">Login</h3>
+                    <form onSubmit={handleSubmit}>
+                        <div className="mb-3">
+                            <label className="form-label">Email address</label>
                             <input
                                 type="email"
                                 name="email"
                                 value={forminput.email}
                                 onChange={changeInput}
-                                style={styles.input}
+                                className="form-control"
+                                placeholder="Enter your email"
                                 required
                             />
                         </div>
-                        <div style={styles.formGroup}>
-                            <label style={styles.label}>Password</label>
+                        <div className="mb-3">
+                            <label className="form-label">Password</label>
                             <input
                                 type="password"
                                 name="password"
                                 value={forminput.password}
                                 onChange={changeInput}
-                                style={styles.input}
+                                className="form-control"
+                                placeholder="Enter your password"
                                 required
                             />
                         </div>
-                        <button type="submit" style={styles.button}>Login</button>
+                        <button type="submit" className="btn btn-primary w-100 fw-semibold">Login</button>
                     </form>
-                    <p style={{ marginTop: '10px' }}>
-                        Don't have an account? <Link to="/">Register</Link>
-                    </p>
+                    <div className="text-center mt-3">
+                        <small>Don't have an account? <Link to="/">Register here</Link></small>
+                    </div>
                 </div>
             </div>
             <ToastContainer
                 position="top-right"
                 autoClose={3000}
                 hideProgressBar={false}
-                newestOnTop={false}
                 closeOnClick
                 pauseOnHover
                 theme="colored"
@@ -88,13 +86,13 @@ const Login = () => {
 const Navbar = () => {
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div className="container-fluid">
-                <Link className="navbar-brand" to="/">StudentApp</Link>
+            <div className="container">
+                <Link className="navbar-brand fw-bold" to="/">StudentApp</Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span className="navbar-toggler-icon"></span>
                 </button>
-                <div className="collapse navbar-collapse" id="navbarNav">
-                    <ul className="navbar-nav ms-auto">
+                <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul className="navbar-nav">
                         <li className="nav-item">
                             <Link className="nav-link" to="/">Home</Link>
                         </li>
@@ -109,57 +107,6 @@ const Navbar = () => {
             </div>
         </nav>
     );
-};
-
-const styles = {
-    container: {
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '95vh',
-        backgroundColor: '#f0f0f0',
-    },
-    card: {
-        backgroundColor: '#fff',
-        padding: '30px 40px',
-        borderRadius: '10px',
-        boxShadow: '0 0 15px rgba(0,0,0,0.1)',
-        width: '350px'
-    },
-    heading: {
-        textAlign: 'center',
-        marginBottom: '20px',
-        color: '#333',
-    },
-    form: {
-        display: 'flex',
-        flexDirection: 'column',
-    },
-    formGroup: {
-        marginBottom: '15px',
-    },
-    label: {
-        marginBottom: '5px',
-        display: 'block',
-        color: '#555',
-        fontWeight: '500',
-    },
-    input: {
-        width: '100%',
-        padding: '10px',
-        borderRadius: '5px',
-        border: '1px solid #ccc',
-        outline: 'none',
-    },
-    button: {
-        padding: '10px',
-        borderRadius: '5px',
-        border: 'none',
-        backgroundColor: '#007BFF',
-        color: '#fff',
-        cursor: 'pointer',
-        fontWeight: '600',
-    }
 };
 
 export default Login;
