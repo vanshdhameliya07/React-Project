@@ -6,3 +6,4 @@ import crudreducer from "./reducer/crudreducer";
 
 let store = createStore(crudreducer, applyMiddleware(thunk));
 export default store;
+

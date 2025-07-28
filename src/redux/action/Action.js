@@ -11,6 +11,7 @@ let add_student = (record) => {
                 type: "Add_Student",
                 payload: res
             })
+            
 
 
         } catch (err) {

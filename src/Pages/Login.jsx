@@ -64,6 +64,7 @@ const Login = () => {
                                 required
                             />
                         </div>
+                        
                         <button type="submit" className="btn btn-primary w-100 fw-semibold">Login</button>
                     </form>
                     <div className="text-center mt-3">

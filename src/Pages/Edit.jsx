@@ -10,6 +10,7 @@ const Edit = () => {
 
     const single = useSelector((state) => state.student);
 
+    
     const [forminput, setForminput] = useState({
         sname: '',
         Class: '',

@@ -8,8 +8,6 @@ const View = () => {
     const navigate = useNavigate();
     const users = useSelector((state) => state.student);
     
-
-
     const [searchField, setSearchField] = useState({
         sname: ''
     });

@@ -12,6 +12,7 @@ let crudreducer = (state = initalstate, action) => {
                 ...state,
                 user: data
             }
+            
 
         case "login_user":
             
